@@ -1,17 +1,14 @@
 <?php
 /*
 Plugin Name: MF Countdown
-Plugin URI: 
+Plugin URI: https://github.com/frostkom/mf_countdown
 Description:
-Version: 1.1.2
+Version: 1.1.3
 Licence: GPLv2 or later
 Author: Martin Fors
 Author URI: https://martinfors.se
 Text Domain: lang_countdown
 Domain Path: /lang
-
-Depends: MF Base
-GitHub Plugin URI: 
 */
 
 if(!function_exists('is_plugin_active') || function_exists('is_plugin_active') && is_plugin_active("mf_base/index.php"))
