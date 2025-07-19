@@ -1,0 +1,60 @@
+@media all
+{
+	.widget.widget_countdown{}
+
+		.widget.widget_countdown > div
+		{
+			display: flex;
+			gap: 3%;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+		}
+
+			.widget.widget_countdown:hover > div::before
+			{
+				background: rgba(255, 255, 255, .3);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-family: "Font Awesome 5 Free";
+				font-weight: 900;
+				position: absolute;
+				height: 4em;
+				width: 4em;
+			}
+
+			.widget.widget_countdown.playing > div:hover::before
+			{
+				content: "\f04c";
+			}
+
+			.widget.widget_countdown.pausing > div:hover::before
+			{
+				content: "\f04b";
+			}
+
+			.widget.widget_countdown > div > div > div:first-of-type
+			{
+				font-size: 2.5em;
+				text-align: center;
+			}
+
+			.widget.widget_countdown > div > div > div:last-of-type
+			{
+				font-size: .6em;
+				text-align: center;
+			}
+
+		.widget.widget_countdown p
+		{
+			margin: 1em 0 0;
+			text-align: center;
+		}
+
+			.widget.widget_countdown div + p
+			{
+				font-size: .6em;
+			}
+}
