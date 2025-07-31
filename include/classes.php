@@ -128,7 +128,6 @@ class mf_countdown
 			'editor_script' => 'script_countdown_block_wp',
 			'editor_style' => 'style_base_block_wp',
 			'render_callback' => array($this, 'block_render_callback'),
-			//'style' => 'style_base_block_wp',
 		));
 	}
 
@@ -549,7 +548,7 @@ class mf_countdown
 			else
 			{
 				$json_output['html'] = "<p>";
-				
+
 					if($countdown_link != '')
 					{
 						$json_output['html'] .= " <a href='".$countdown_link."'>";
@@ -561,7 +560,7 @@ class mf_countdown
 					{
 						$json_output['html'] .= "</a>";
 					}
-					
+
 				$json_output['html'] .= "</p>";
 			}
 		}
