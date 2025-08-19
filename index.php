@@ -3,7 +3,7 @@
 Plugin Name: MF Countdown
 Plugin URI: https://github.com/frostkom/mf_countdown
 Description:
-Version: 1.1.4
+Version: 1.1.6
 Licence: GPLv2 or later
 Author: Martin Fors
 Author URI: https://martinfors.se

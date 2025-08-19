@@ -6,7 +6,7 @@ class mf_countdown
 
 	function block_render_callback($attributes)
 	{
-		if(!isset($attributes['countdown_date'])){			$attributes['countdown_date'] = date("Y-m-d H:i:s", strtotime("+1 month"));}
+		if(!isset($attributes['countdown_date'])){			$attributes['countdown_date'] = date("Y-m-d H:i:s", strtotime("-1 day"));}
 		if(!isset($attributes['countdown_date_info'])){		$attributes['countdown_date_info'] = "";}
 		if(!isset($attributes['countdown_text'])){			$attributes['countdown_text'] = __("Done!", 'lang_countdown');}
 		if(!isset($attributes['countdown_link'])){			$attributes['countdown_link'] = "";}
@@ -37,7 +37,6 @@ class mf_countdown
 
 		mf_enqueue_style('style_countdown', $plugin_include_url."style.css");
 		mf_enqueue_script('script_countdown', $plugin_include_url."script.js", array(
-			'server_date' => date("Y-m-d H:i:s"),
 			'ajax_url' => admin_url('admin-ajax.php'),
 			'days_label' => __("Days", 'lang_countdown'),
 			'day_label' => __("Day", 'lang_countdown'),

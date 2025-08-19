@@ -3,7 +3,6 @@ jQuery(function($)
 	$(".widget.widget_countdown").each(function()
 	{
 		var dom_obj = $(this),
-			server_date = new Date(script_countdown.server_date),
 			now_date = new Date();
 
 		var widget_countdown_date = dom_obj.data('countdown_date'),
@@ -15,21 +14,27 @@ jQuery(function($)
 			widget_countdown_countup = dom_obj.data('countdown_countup'),
 			widget_countdown_countup_info = dom_obj.data('countdown_countup_info');
 
-		var countdown_date = new Date(widget_countdown_date),
-			now_date_diff = (server_date - now_date);
-
 		dom_obj.addClass('playing');
 
 		var timer = setInterval(function()
 		{
 			now_date = new Date();
 
-			var countdown_date_left = (countdown_date - now_date - now_date_diff);
+			if(typeof widget_countdown_date != 'undefined')
+			{
+				var countdown_date = new Date(widget_countdown_date),
+					countdown_date_left = (countdown_date - now_date);
+			}
 
-			if(widget_countdown_countup != '')
+			else
+			{
+				var countdown_date_left = 0;
+			}
+
+			if(typeof widget_countdown_countup != 'undefined')
 			{
 				var countdown_countup = new Date(widget_countdown_countup),
-					countdown_countup_since = (now_date - countdown_countup - now_date_diff);
+					countdown_countup_since = (now_date - countdown_countup);
 			}
 
 			else
