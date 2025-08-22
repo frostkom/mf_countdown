@@ -16,85 +16,119 @@ class mf_countdown
 
 		$out = "";
 
-		$plugin_include_url = plugin_dir_url(__FILE__);
-
-		$obj_encryption = new mf_encryption('countdown');
-
-		if($attributes['countdown_date'] > DEFAULT_DATE)
+		if($attributes['countdown_date'] < date("Y-m-d H:i:s") && ($attributes['countdown_countup'] == '' || $attributes['countdown_countup'] > date("Y-m-d H:i:s")))
 		{
-			$countdown_date_encrypted = $obj_encryption->encrypt($attributes['countdown_date']);
+			$out .= "<div".parse_block_attributes(array('class' => "widget widget_countdown", 'attributes' => $attributes)).">";
+
+				if($attributes['countdown_html'] != '')
+				{
+					$out .= $attributes['countdown_html'];
+				}
+
+				else
+				{
+					$out .= "<p>";
+
+						if($attributes['countdown_link'] != '')
+						{
+							$out .= " <a href='".$attributes['countdown_link']."'>";
+						}
+
+							$out .= $attributes['countdown_text'];
+
+						if($attributes['countdown_link'] != '')
+						{
+							$out .= "</a>";
+						}
+
+					$out .= "</p>";
+				}
+
+			$out .= "</div>";
 		}
 
-		if($attributes['countdown_link'] != '')
+		else
 		{
-			$countdown_link_encrypted = $obj_encryption->encrypt($attributes['countdown_link']);
-		}
+			$plugin_include_url = plugin_dir_url(__FILE__);
 
-		if($attributes['countdown_html'] != '')
-		{
-			$countdown_html_encrypted = $obj_encryption->encrypt($attributes['countdown_html']);
-		}
+			mf_enqueue_style('style_countdown', $plugin_include_url."style.css");
+			mf_enqueue_script('script_countdown', $plugin_include_url."script.js", array(
+				'ajax_url' => admin_url('admin-ajax.php'),
+				'days_label' => __("Days", 'lang_countdown'),
+				'day_label' => __("Day", 'lang_countdown'),
+				'hours_label' => __("Hours", 'lang_countdown'),
+				'hour_label' => __("Hour", 'lang_countdown'),
+				'minutes_label' => __("Minutes", 'lang_countdown'),
+				'minute_label' => __("Minute", 'lang_countdown'),
+				'seconds_label' => __("Seconds", 'lang_countdown'),
+				'second_label' => __("Second", 'lang_countdown'),
+				'loading_animation' => apply_filters('get_loading_animation', ''),
+			));
 
-		mf_enqueue_style('style_countdown', $plugin_include_url."style.css");
-		mf_enqueue_script('script_countdown', $plugin_include_url."script.js", array(
-			'ajax_url' => admin_url('admin-ajax.php'),
-			'days_label' => __("Days", 'lang_countdown'),
-			'day_label' => __("Day", 'lang_countdown'),
-			'hours_label' => __("Hours", 'lang_countdown'),
-			'hour_label' => __("Hour", 'lang_countdown'),
-			'minutes_label' => __("Minutes", 'lang_countdown'),
-			'minute_label' => __("Minute", 'lang_countdown'),
-			'seconds_label' => __("Seconds", 'lang_countdown'),
-			'second_label' => __("Second", 'lang_countdown'),
-			'loading_animation' => apply_filters('get_loading_animation', ''),
-		));
-
-		$out = "<div"
-			.parse_block_attributes(array('class' => "widget widget_countdown", 'attributes' => $attributes));
+			$obj_encryption = new mf_encryption('countdown');
 
 			if($attributes['countdown_date'] > DEFAULT_DATE)
 			{
-				$out .= " data-countdown_date='".$attributes['countdown_date']."'";
+				$countdown_date_encrypted = $obj_encryption->encrypt($attributes['countdown_date']);
 			}
 
-			if($attributes['countdown_date_info'] != '')
+			if($attributes['countdown_link'] != '')
 			{
-				$out .= " data-countdown_date_info='".$attributes['countdown_date_info']."'";
+				$countdown_link_encrypted = $obj_encryption->encrypt($attributes['countdown_link']);
 			}
 
-			if($countdown_date_encrypted != '')
+			if($attributes['countdown_html'] != '')
 			{
-				$out .= " data-countdown_date_encrypted='".$countdown_date_encrypted."'";
+				$countdown_html_encrypted = $obj_encryption->encrypt($attributes['countdown_html']);
 			}
 
-			if($attributes['countdown_text'] != '')
-			{
-				$out .= " data-countdown_text='".htmlspecialchars($attributes['countdown_text'], ENT_QUOTES, 'UTF-8')."'";
-			}
+			$out .= "<div"
+				.parse_block_attributes(array('class' => "widget widget_countdown loading", 'attributes' => $attributes));
 
-			if(isset($countdown_link_encrypted) && $countdown_link_encrypted != '')
-			{
-				$out .= " data-countdown_link_encrypted='".$countdown_link_encrypted."'";
-			}
+				if($attributes['countdown_date'] > DEFAULT_DATE)
+				{
+					$out .= " data-countdown_date='".$attributes['countdown_date']."'";
+				}
 
-			if(isset($countdown_html_encrypted) && $countdown_html_encrypted != '')
-			{
-				$out .= " data-countdown_html_encrypted='".$countdown_html_encrypted."'";
-			}
+				if($attributes['countdown_date_info'] != '')
+				{
+					$out .= " data-countdown_date_info='".$attributes['countdown_date_info']."'";
+				}
 
-			if($attributes['countdown_countup'] > DEFAULT_DATE)
-			{
-				$out .= " data-countdown_countup='".$attributes['countdown_countup']."'";
-			}
+				if($countdown_date_encrypted != '')
+				{
+					$out .= " data-countdown_date_encrypted='".$countdown_date_encrypted."'";
+				}
 
-			if($attributes['countdown_countup_info'] != '')
-			{
-				$out .= " data-countdown_countup_info='".$attributes['countdown_countup_info']."'";
-			}
+				if($attributes['countdown_text'] != '')
+				{
+					$out .= " data-countdown_text='".htmlspecialchars($attributes['countdown_text'], ENT_QUOTES, 'UTF-8')."'";
+				}
 
-		$out .= ">
-			<p>".apply_filters('get_loading_animation', '', ['class' => "fa-3x"])."</p>
-		</div>";
+				if(isset($countdown_link_encrypted) && $countdown_link_encrypted != '')
+				{
+					$out .= " data-countdown_link_encrypted='".$countdown_link_encrypted."'";
+				}
+
+				if(isset($countdown_html_encrypted) && $countdown_html_encrypted != '')
+				{
+					$out .= " data-countdown_html_encrypted='".$countdown_html_encrypted."'";
+				}
+
+				if($attributes['countdown_countup'] > DEFAULT_DATE)
+				{
+					$out .= " data-countdown_countup='".$attributes['countdown_countup']."'";
+				}
+
+				if($attributes['countdown_countup_info'] != '')
+				{
+					$out .= " data-countdown_countup_info='".$attributes['countdown_countup_info']."'";
+				}
+
+			$out .= ">
+				<p>".apply_filters('get_loading_animation', '', ['class' => "fa-3x"])."</p>
+			</div>";
+		}
 
 		return $out;
 	}
@@ -130,7 +164,7 @@ class mf_countdown
 		));
 	}
 
-	function get_loading_animation($html, $args = [])
+	/*function get_loading_animation($html, $args = [])
 	{
 		if(!isset($args['class'])){		$args['class'] = "";}
 		if(!isset($args['style'])){		$args['style'] = "";}
@@ -515,7 +549,7 @@ class mf_countdown
 		}
 
 		return $html;
-	}
+	}*/
 
 	function api_countdown_validate()
 	{

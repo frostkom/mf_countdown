@@ -1,6 +1,6 @@
 jQuery(function($)
 {
-	$(".widget.widget_countdown").each(function()
+	$(".widget.widget_countdown.loading").each(function()
 	{
 		var dom_obj = $(this),
 			now_date = new Date();
