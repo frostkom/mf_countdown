@@ -567,7 +567,7 @@ class mf_countdown
 		$countdown_link = $obj_encryption->decrypt($countdown_link_encrypted);
 		$countdown_html = $obj_encryption->decrypt($countdown_html_encrypted);
 
-		$date_now = date("Y-m-d H:i:s");
+		$date_now = date("Y-m-d H:i:s", strtotime("+5 second")); // Add some margin of safety
 
 		if($countdown_date <= $date_now)
 		{
