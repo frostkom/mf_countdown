@@ -22,39 +22,39 @@
 			},
 			'countdown_date':
 			{
-                'type': 'string',
-                'default': ''
-            },
+				'type': 'string',
+				'default': ''
+			},
 			'countdown_date_info':
 			{
-                'type': 'string',
-                'default': ''
-            },
+				'type': 'string',
+				'default': ''
+			},
 			'countdown_text':
 			{
-                'type': 'string',
-                'default': ''
-            },
+				'type': 'string',
+				'default': ''
+			},
 			'countdown_link':
 			{
-                'type': 'string',
-                'default': ''
-            },
+				'type': 'string',
+				'default': ''
+			},
 			'countdown_html':
 			{
-                'type': 'string',
-                'default': ''
-            },
+				'type': 'string',
+				'default': ''
+			},
 			'countdown_countup':
 			{
-                'type': 'string',
-                'default': ''
-            },
+				'type': 'string',
+				'default': ''
+			},
 			'countdown_countup_info':
 			{
-                'type': 'string',
-                'default': ''
-            },
+				'type': 'string',
+				'default': ''
+			},
 		},
 		'supports':
 		{
