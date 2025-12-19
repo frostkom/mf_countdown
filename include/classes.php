@@ -25,7 +25,7 @@ class mf_countdown
 					$out .= $attributes['countdown_html'];
 				}
 
-				else
+				else if($attributes['countdown_text'] != '')
 				{
 					$out .= "<p>";
 

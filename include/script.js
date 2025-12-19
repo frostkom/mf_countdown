@@ -118,12 +118,12 @@ jQuery(function($)
 
 				display += "</div>";
 
-				if(countdown_date_left > 0 && widget_countdown_date_info != '')
+				if(countdown_date_left > 0 && widget_countdown_date_info != '' && typeof widget_countdown_date_info != 'undefined')
 				{
 					display += "<p>" + widget_countdown_date_info + "</p>";
 				}
 
-				else if(widget_countdown_countup_info != '')
+				else if(widget_countdown_countup_info != '' && typeof widget_countdown_countup_info != 'undefined')
 				{
 					display += "<p>" + widget_countdown_countup_info + "</p>";
 				}
