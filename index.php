@@ -3,7 +3,7 @@
 Plugin Name: MF Countdown
 Plugin URI: https://github.com/frostkom/mf_countdown
 Description:
-Version: 1.1.11
+Version: 1.1.12
 Licence: GPLv2 or later
 Author: Martin Fors
 Author URI: https://martinfors.se
@@ -28,11 +28,11 @@ if(!function_exists('is_plugin_active') || function_exists('is_plugin_active') &
 	else
 	{
 		//add_filter('get_loading_animation', array($obj_countdown, 'get_loading_animation'), 9, 2);
-
-		if(wp_doing_ajax())
-		{
-			add_action('wp_ajax_api_countdown_validate', array($obj_countdown, 'api_countdown_validate'));
-			//add_action('wp_ajax_nopriv_api_countdown_validate', array($obj_countdown, 'api_countdown_validate'));
-		}
+	}
+	
+	if(wp_doing_ajax())
+	{
+		add_action('wp_ajax_api_countdown_validate', array($obj_countdown, 'api_countdown_validate'));
+		//add_action('wp_ajax_nopriv_api_countdown_validate', array($obj_countdown, 'api_countdown_validate'));
 	}
 }
