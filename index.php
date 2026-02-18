@@ -2,8 +2,8 @@
 /*
 Plugin Name: MF Countdown
 Plugin URI: https://github.com/frostkom/mf_countdown
-Description:
-Version: 1.1.12
+Description: Add block with a countdown timer
+Version: 1.1.13
 Licence: GPLv2 or later
 Author: Martin Fors
 Author URI: https://martinfors.se
@@ -29,7 +29,7 @@ if(!function_exists('is_plugin_active') || function_exists('is_plugin_active') &
 	{
 		//add_filter('get_loading_animation', array($obj_countdown, 'get_loading_animation'), 9, 2);
 	}
-	
+
 	if(wp_doing_ajax())
 	{
 		add_action('wp_ajax_api_countdown_validate', array($obj_countdown, 'api_countdown_validate'));
