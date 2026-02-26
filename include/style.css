@@ -40,6 +40,7 @@
 	.widget.widget_countdown > div > div > div:last-of-type
 	{
 		font-size: .6em;
+		padding: 0 1em;
 		text-align: center;
 	}
 

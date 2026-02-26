@@ -3,7 +3,7 @@
 Plugin Name: MF Countdown
 Plugin URI: https://github.com/frostkom/mf_countdown
 Description: Add block with a countdown timer
-Version: 1.1.13
+Version: 1.1.14
 Licence: GPLv2 or later
 Author: Martin Fors
 Author URI: https://martinfors.se
