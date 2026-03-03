@@ -16,7 +16,7 @@ class mf_countdown
 
 		$out = "";
 
-		if($attributes['countdown_date'] < date("Y-m-d H:i:s") && ($attributes['countdown_countup'] == '' || $attributes['countdown_countup'] > date("Y-m-d H:i:s")))
+		if($attributes['countdown_date'] < current_time('mysql') && ($attributes['countdown_countup'] == '' || $attributes['countdown_countup'] > current_time('mysql')))
 		{
 			$out .= "<div".parse_block_attributes(array('class' => "widget widget_countdown", 'attributes' => $attributes)).">";
 
