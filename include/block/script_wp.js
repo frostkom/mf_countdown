@@ -2,7 +2,6 @@
 {
 	var el = wp.element.createElement,
 		registerBlockType = wp.blocks.registerBlockType,
-		SelectControl = wp.components.SelectControl,
 		TextControl = wp.components.TextControl,
 		TextareaControl = wp.components.TextareaControl,
 		InspectorControls = wp.blockEditor.InspectorControls;
