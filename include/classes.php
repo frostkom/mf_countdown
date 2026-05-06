@@ -6,7 +6,7 @@ class mf_countdown
 
 	function block_render_callback($attributes)
 	{
-		if(!isset($attributes['countdown_date'])){			$attributes['countdown_date'] = date("Y-m-d H:i:s", strtotime("-1 day"));}
+		if(!isset($attributes['countdown_date'])){			$attributes['countdown_date'] = date("Y-m-d H:i:s", strtotime(current_time('mysql')." -1 day"));}
 		if(!isset($attributes['countdown_date_info'])){		$attributes['countdown_date_info'] = "";}
 		if(!isset($attributes['countdown_text'])){			$attributes['countdown_text'] = __("Done!", 'lang_countdown');}
 		if(!isset($attributes['countdown_link'])){			$attributes['countdown_link'] = "";}
@@ -567,7 +567,7 @@ class mf_countdown
 		$countdown_link = $obj_encryption->decrypt($countdown_link_encrypted);
 		$countdown_html = $obj_encryption->decrypt($countdown_html_encrypted);
 
-		$date_now = date("Y-m-d H:i:s", strtotime("+5 second")); // Add some margin of safety
+		$date_now = date("Y-m-d H:i:s", strtotime(current_time('mysql')." +5 second")); // Add some margin of safety
 
 		if($countdown_date <= $date_now)
 		{
